@@ -5,4 +5,3 @@ const tasksApi = axios.create({
 })
 
 export const getAllTasks = () => tasksApi.get('/')
-console.log(getAllTasks());
