@@ -5,3 +5,4 @@ const tasksApi = axios.create({
 })
 
 export const getAllTasks = () => tasksApi.get('/')
+export const sendPaciente = (paciente) => tasksApi.post("/", paciente)
