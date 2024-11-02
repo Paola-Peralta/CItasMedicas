@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 body{
   margin: 0;
   padding: 0;
+  font-family: "Roboto", serif;
+  background: #f5f5f5;
 }
 .sidebar {
   color: #000;
@@ -8,7 +11,7 @@ body{
 }
 .head{
   padding: 0;
-  background: #fff;
+  background: #f5f5f5;
 }
 .menu-bar{
     height: 88vh;
@@ -30,3 +33,21 @@ body{
   .content{
     padding: '24px'
   }
+
+*{
+    box-sizing: border-box;
+}
+
+main{
+    max-width: 800px;
+    width: 90%;
+    margin: auto;
+    padding: 40px;
+}
+  /* .stylePacientes{
+    background: #f5f5f5;
+    max-width: 800px;
+    width: 90%;
+    margin: auto;
+    padding: 40px;
+  } */

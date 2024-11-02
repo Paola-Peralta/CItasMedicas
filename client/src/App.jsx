@@ -3,7 +3,7 @@ import { Collapse, Layout } from 'antd';
 import { Button, theme } from 'antd';
 import MenuList from './components/MenuList';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import './App.css'
+import './index.css'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'; // Cambia MenufoldOutlined a MenuFoldOutlined
 import { getAllTasks } from './api/farmacia.api'
 
