@@ -1,6 +1,6 @@
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import { FileDoneOutlined, HeartOutlined, HomeOutlined, ReconciliationOutlined, SettingOutlined, UsergroupAddOutlined } from '@ant-design/icons'
+import { DiffOutlined, FileDoneOutlined, HeartOutlined, HomeOutlined, ReconciliationOutlined, SettingOutlined, UsergroupAddOutlined } from '@ant-design/icons'
 
 const MenuList = () =>{
     return(
@@ -13,6 +13,9 @@ const MenuList = () =>{
             </Menu.Item>
             <Menu.Item key='citas' icon={<HeartOutlined/>}>
                 <Link to="/citas">Citas</Link>
+            </Menu.Item>
+            <Menu.Item key='consultas' icon={<DiffOutlined/>}>
+                <Link to="/consultas">Consultas</Link>
             </Menu.Item>
             <Menu.Item key='examenes' icon={<ReconciliationOutlined/>}>
                 <Link to="/examenes">Examenes</Link>

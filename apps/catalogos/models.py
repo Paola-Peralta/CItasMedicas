@@ -2,7 +2,7 @@ from django.db import models
 
 class Paciente(models.Model):
     codigo = models.CharField(verbose_name='Código', max_length=10, unique=True)
-    cedula = models.CharField(max_length=15, unique=True)  # Cédula única
+    cedula = models.CharField(max_length=16, unique=True)  # Cédula única
     nombres = models.CharField(verbose_name='Nombres', max_length=50)
     primerApellido = models.CharField(verbose_name='Primer Apellido', max_length=50)
     segundoApellido = models.CharField(verbose_name='Segundo Apellido', max_length=50)
