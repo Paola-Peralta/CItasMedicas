@@ -4,7 +4,7 @@ import { getAllTasks, sendPaciente } from '../api/farmacia.api';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-
+import Swal from 'sweetalert2'
 
 const FormPacientes = () => {
     // Definir el esquema de validación con Yup
@@ -39,14 +39,23 @@ const FormPacientes = () => {
             const response = await sendPaciente(values);
             console.log(response);
             if (response.status === 200 || response.status === 201) {
-                alert('Formulario enviado exitosamente');
+                Swal.fire({
+                  title: "Excelente!",
+                  text: "El paciente ha sido registrado!",
+                  icon: "success"
+                });
                 resetForm();
             } else {
                 alert('Error al enviar el formulario');
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('Ocurrió un error al enviar el formulario');
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "No se pudo registrar a este paciente!",
+              footer: '<a href="#">Why do I have this issue?</a>'
+            });
         }
     };
         
