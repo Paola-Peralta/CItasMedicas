@@ -5,13 +5,14 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import '../App.css'
 
 const FormPacientes = () => {
     // Definir el esquema de validación con Yup
     const validationSchema = Yup.object({
-    codigo: Yup.string()
-    .required('El codigo es requerido')
-    .min(3, 'El codigo debe tener al menos 3 caracteres'),
+    // codigo: Yup.string()
+    // .required('El codigo es requerido')
+    // .min(3, 'El codigo debe tener al menos 3 caracteres'),
     cedula: Yup.string()
     .required('La cédula es requerido')
     .min(15, 'La cédula debe tener al menos 15 caracteres'),
@@ -68,54 +69,65 @@ const FormPacientes = () => {
     >
 
       {({ isSubmitting }) => (
-        <Form>
-          <div>
-            <label htmlFor="codigo">Código:</label>
-            <Field type="text" id="codigo" name="codigo" />
-            <ErrorMessage name="codigo" component="p" style={{ color: 'red' }} />
+        <Form className="form">
+
+          <div className="item-group">
+          {/* <div className="item-input">
+            <label htmlFor="codigo" className="label"> Código: </label>
+            <Field type="text" id="codigo" name="codigo" className="input-text" />
+            <ErrorMessage name="codigo" component="p" className="error" />
+          </div> */}
+
+          <div className="item-input">
+            <label htmlFor="cedula" className="label" >Cédula:</label>
+            <Field type="text" id="cedula" name="cedula" className="input-text"/>
+            <ErrorMessage name="cedula" component="p" className="error" />
           </div>
-          <div>
-            <label htmlFor="cedula">Cédula:</label>
-            <Field type="text" id="cedula" name="cedula" />
-            <ErrorMessage name="cedula" component="p" style={{ color: 'red' }} />
           </div>
 
-          <div>
-            <label htmlFor="nombre">Nombres:</label>
-            <Field type="text" id="nombre" name="nombres" />
-            <ErrorMessage name="nombre" component="p" style={{ color: 'red' }} />
+          <div className="item-group">
+          <div className="item-input">
+            <label htmlFor="nombre" className="label" >Nombres:</label>
+            <Field type="text" id="nombre" name="nombres" className="input-text"/>
+            <ErrorMessage name="nombre" component="p" className="error" />
           </div>
 
-          <div>
-            <label htmlFor="primerApellido">Primer Apellido:</label>
-            <Field type="text" id="primerApellido" name="primerApellido" />
-            <ErrorMessage name="primerApellido" component="p" style={{ color: 'red' }} />
+          <div className="item-input">
+            <label htmlFor="primerApellido" className="label" >Primer Apellido:</label>
+            <Field type="text" id="primerApellido" name="primerApellido" className="input-text" />
+            <ErrorMessage name="primerApellido" component="p" className="error" />
+          </div>
           </div>
 
-          <div>
-            <label htmlFor="segundoApellido"> Segundo Apellido:</label>
-            <Field type="text" id="segundoApellido" name="segundoApellido" />
-            <ErrorMessage name="segundoApellido" component="p" style={{ color: 'red' }} />
+          <div className="item-group">
+          <div className="item-input">
+            <label htmlFor="segundoApellido" className="label"> Segundo Apellido:</label>
+            <Field type="text" id="segundoApellido" name="segundoApellido" className="input-text"/>
+            <ErrorMessage name="segundoApellido" component="p" className="error" />
           </div>
 
-          <div>
-            <label htmlFor="fecha_nacimiento"> Fecha de Nacimiento :</label>
-            <Field type="date" id="fecha_nacimiento" name="fecha_nacimiento" />
-            <ErrorMessage name="fecha_nacimiento" component="p" style={{ color: 'red' }} />
+          <div className="item-input">
+            <label htmlFor="fecha_nacimiento" className="label"> Fecha de Nacimiento :</label>
+            <Field type="date" id="fecha_nacimiento" name="fecha_nacimiento" className="input-date "/>
+            <ErrorMessage name="fecha_nacimiento" component="p" className="error" />
           </div>
-          <div>
-            <label htmlFor="direccion"> Dirección :</label>
-            <Field type="text" id="direccion" name="direccion" />
-            <ErrorMessage name="direccion" component="p" style={{ color: 'red' }} />
           </div>
 
-          <div>
-            <label htmlFor="telefono"> Teléfono :</label>
-            <Field type="text" id="telefono" name="telefono" />
-            <ErrorMessage name="telefono" component="p" style={{ color: 'red' }} />
+          <div className="item-group">
+          <div className="item-input">
+            <label htmlFor="direccion" className="label"> Dirección :</label>
+            <Field type="text" id="direccion" name="direccion" className="input-text" />
+            <ErrorMessage name="direccion" component="p" className="error" />
           </div>
 
-          <button type="submit" disabled={isSubmitting}>
+          <div className="item-input">
+            <label htmlFor="telefono" className="label"> Teléfono :</label>
+            <Field type="text" id="telefono" name="telefono" className="input-text" />
+            <ErrorMessage name="telefono" component="p" className="error" />
+          </div>
+          </div>
+
+          <button type="submit" disabled={isSubmitting} className="submit">
             {isSubmitting ? 'Enviando...' : 'Enviar'}
           </button>
         </Form>

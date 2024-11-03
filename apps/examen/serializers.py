@@ -10,3 +10,4 @@ class ResultadoSerializer(ModelSerializer):
     class Meta:
         model = Resultado
         fields = '__all__'
+        read_only_fields = ('codigo',)

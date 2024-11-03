@@ -14,3 +14,28 @@ main{
      margin: auto;
      padding: 40px;
 }
+.form{
+    display: flex ;
+    flex-direction: column;
+}
+.error{
+    color: #D55;
+}
+
+.item-input{
+    width: 100%;
+    flex-grow: 1;
+    margin: 20px;
+    margin-bottom: 0px;
+}
+
+.input-text{
+    width: 100%;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.item-group{
+    display: flex;
+
+}

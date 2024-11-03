@@ -5,16 +5,19 @@ class PacienteSerializer(ModelSerializer):
     class Meta:
         model = Paciente
         fields = '__all__'
+        read_only_fields = ('codigo',)
 
 class EspecialidadSerializer(ModelSerializer):
     class Meta:
         model = Especialidad
         fields = '__all__'
+        read_only_fields = ('codigo',)
 
 class MedicoSerializer(ModelSerializer):
     class Meta:
         model = Medico
         fields = '__all__'
+        read_only_fields = ('codigo',)
 
 class CitaSerializer(ModelSerializer):
     class Meta:
