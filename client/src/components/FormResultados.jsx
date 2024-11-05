@@ -27,32 +27,38 @@ const FormResultados = () => {
             //on Submit={handleSubmit}
         >
             {({ isSubmitting }) => (
-                <Form>
-                <div>
+                <Form className="form">
+                {/* <div>
                     <label htmlFor="codigo">Código del Resultado:</label>
                     <Field type="text" id="codigo" name="codigo" />
-                    <ErrorMessage name="codigo" component="p" style={{ color: 'red' }} />
+                    <ErrorMessage name="codigo" component="p" className="error" />
+                </div> */}
+
+                <div className="item-group">
+                    <div className="item-input">
+                        <label htmlFor="descripcion">Descripción:</label>
+                        <Field type="text" id="descripcion" name="descripcion" className="input-text" />
+                        <ErrorMessage name="descripcion" component="p" className="error" />
+                    </div>
                 </div>
 
-                <div>
-                    <label htmlFor="descripcion">Descripción:</label>
-                    <Field type="text" id="descripcion" name="descripcion" />
-                    <ErrorMessage name="descripcion" component="p" style={{ color: 'red' }} />
+                <div className="item-group">
+                    <div className="item-input">
+                        <label htmlFor="examen">Examen:</label>
+                        <Field type="number" id="examen" name="examen" className="input-text" />
+                        <ErrorMessage name="examen" component="p" className="error"/>
+                    </div>
                 </div>
 
-                <div>
-                    <label htmlFor="examen">Examen:</label>
-                    <Field type="number" id="examen" name="examen" />
-                    <ErrorMessage name="examen" component="p" style={{ color: 'red' }} />
+                <div className="item-group">
+                    <div className="item-input">
+                        <label htmlFor="estado">Estado del Resultado:</label>
+                        <Field type="number" id="estado" name="estado" className="input-text" />
+                        <ErrorMessage name="estado" component="p" className="error" />
+                    </div>
                 </div>
 
-                <div>
-                    <label htmlFor="estado">Estado del Resultado:</label>
-                    <Field type="number" id="estado" name="estado" />
-                    <ErrorMessage name="estado" component="p" style={{ color: 'red' }} />
-                </div>
-
-                <button type="submit" disabled={isSubmitting}>
+                <button type="submit" disabled={isSubmitting} className="submit">
                     {isSubmitting ? 'Enviando...' : 'Enviar'}
                 </button>
             </Form>

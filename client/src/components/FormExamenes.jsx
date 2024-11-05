@@ -26,32 +26,37 @@ const FormExamenes = () => {
             //on Submit={handleSubmit}
         >
             {({ isSubmitting }) => (
-                <Form>
-                    <div>
+                <Form className="form">
+                    {/* <div>
                         <label htmlFor="codigo">Código del Examen:</label>
                         <Field type="text" id="codigo" name="codigo" />
                         <ErrorMessage name="codigo" component="p" style={{ color: 'red' }} />
+                    </div> */}
+                    <div className="item-group">
+                        <div className="item-input">
+                            <label htmlFor="nombre">Nombre del Examen:</label>
+                            <Field type="text" id="nombre" name="nombre" className="input-text" />
+                            <ErrorMessage name="nombre" component="p" className="error" />
+                        </div>
                     </div>
 
-                    <div>
-                        <label htmlFor="nombre">Nombre del Examen:</label>
-                        <Field type="text" id="nombre" name="nombre" />
-                        <ErrorMessage name="nombre" component="p" style={{ color: 'red' }} />
+                    <div className="item-group">
+                        <div className="item-input">
+                            <label htmlFor="fechaEntrega">Fecha de Entrega:</label>
+                            <Field type="date" id="fechaEntrega" name="fechaEntrega" className="input-date " />
+                            <ErrorMessage name="fechaEntrega" component="p" className="error"/>
+                        </div>
                     </div>
 
-                    <div>
-                        <label htmlFor="fechaEntrega">Fecha de Entrega:</label>
-                        <Field type="date" id="fechaEntrega" name="fechaEntrega" />
-                        <ErrorMessage name="fechaEntrega" component="p" style={{ color: 'red' }} />
+                    <div className="item-group">
+                        <div className="item-input">
+                            <label htmlFor="consulta">Consulta:</label>
+                            <Field type="number" id="consulta" name="consulta" className="input-text"/>
+                            <ErrorMessage name="consulta" component="p" className="error" />
+                        </div>
                     </div>
 
-                    <div>
-                        <label htmlFor="consulta">Consulta:</label>
-                        <Field type="number" id="consulta" name="consulta" />
-                        <ErrorMessage name="consulta" component="p" style={{ color: 'red' }} />
-                    </div>
-
-                    <button type="submit" disabled={isSubmitting}>
+                    <button type="submit" disabled={isSubmitting} className="submit">
                         {isSubmitting ? 'Enviando...' : 'Enviar'}
                     </button>
                 </Form>

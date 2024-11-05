@@ -27,32 +27,37 @@ const FormConsulta = () => {
             //on Submit={handleSubmit}
         >
             {({ isSubmitting }) => (
-                <Form>
-                <div>
+                <Form className="form">
+                {/* <div>
                     <label htmlFor="codigo">Código de la Consulta:</label>
                     <Field type="text" id="codigo" name="codigo" />
-                    <ErrorMessage name="codigo" component="p" style={{ color: 'red' }} />
+                    <ErrorMessage name="codigo" component="p" className="error" />
+                </div> */}
+
+                <div className="item-group">
+                    <div className="item-input">
+                        <label htmlFor="diagnostico">Diagnóstico:</label>
+                        <Field type="text" id="diagnostico" name="diagnostico" className="input-text"/>
+                        <ErrorMessage name="diagnostico" component="p" className="error" />
+                    </div>
+                </div>
+                <div className="item-group">
+                    <div className="item-input">
+                        <label htmlFor="sintomas">Síntomas:</label>
+                        <Field as="textarea" id="sintomas" name="sintomas" className="input-area"/>
+                        <ErrorMessage name="sintomas" component="p" className="error" />
+                    </div>
                 </div>
 
-                <div>
-                    <label htmlFor="diagnostico">Diagnóstico:</label>
-                    <Field type="text" id="diagnostico" name="diagnostico" />
-                    <ErrorMessage name="diagnostico" component="p" style={{ color: 'red' }} />
+                <div className="item-group">
+                    <div className="item-input">
+                        <label htmlFor="cita">Cita:</label>
+                        <Field type="number" id="cita" name="cita" className="input-text" />
+                        <ErrorMessage name="cita" component="p" className="error" />
+                    </div>
                 </div>
 
-                <div>
-                    <label htmlFor="sintomas">Síntomas:</label>
-                    <Field as="textarea" id="sintomas" name="sintomas" />
-                    <ErrorMessage name="sintomas" component="p" style={{ color: 'red' }} />
-                </div>
-
-                <div>
-                    <label htmlFor="cita">Cita:</label>
-                    <Field type="number" id="cita" name="cita" />
-                    <ErrorMessage name="cita" component="p" style={{ color: 'red' }} />
-                </div>
-
-                <button type="submit" disabled={isSubmitting}>
+                <button type="submit" disabled={isSubmitting} className="submit">
                     {isSubmitting ? 'Enviando...' : 'Enviar'}
                 </button>
             </Form>

@@ -37,50 +37,60 @@ const FormCitas = () => {
             //on Submit={handleSubmit}
         >
             {({ isSubmitting }) => (
-                <Form>
-                    <div>
+                <Form className="form">
+
+                    {/* <div>
                         <label htmlFor="codigo_cita">Código de Cita:</label>
                         <Field type="text" id="codigo_cita" name="codigo_cita" />
                         <ErrorMessage name="codigo_cita" component="p" style={{ color: 'red' }} />
+                    </div> */}
+                    <div className="item-group">
+                        <div className="item-input">
+                            <label htmlFor="Fecha">Fecha:</label>
+                            <Field type="date" id="Fecha" name="Fecha" className="input-date "/>
+                            <ErrorMessage name="Fecha" component="p" className="error" />
+                        </div>                        
                     </div>
 
-                    <div>
-                        <label htmlFor="Fecha">Fecha:</label>
-                        <Field type="date" id="Fecha" name="Fecha" />
-                        <ErrorMessage name="Fecha" component="p" style={{ color: 'red' }} />
+
+                    <div className="item-group">
+                        <div className="item-input">
+                            <label htmlFor="Hora_cita">Hora de la Cita:</label>
+                            <Field type="datetime-local" id="Hora_cita" name="Hora_cita" className="input-date " />
+                            <ErrorMessage name="Hora_cita" component="p" className="error"  />
+                        </div>
+
+                        <div className="item-input">
+                            <label htmlFor="Dia_cita">Día de la Cita:</label>
+                            <Field type="text" id="Dia_cita" name="Dia_cita" className="input-text" />
+                            <ErrorMessage name="Dia_cita" component="p" className="error" />
+                        </div>
                     </div>
 
-                    <div>
-                        <label htmlFor="Hora_cita">Hora de la Cita:</label>
-                        <Field type="datetime-local" id="Hora_cita" name="Hora_cita" />
-                        <ErrorMessage name="Hora_cita" component="p" style={{ color: 'red' }} />
+                    <div className="item-group">
+                        <div className="item-input">
+                            <label htmlFor="motivo">Motivo:</label>
+                            <Field as="textarea" id="motivo" name="motivo" className="input-area"/>
+                            <ErrorMessage name="motivo" component="p" className="error"  />
+                        </div>
+                    </div>
+                    <div className="item-group">
+                        <div className="item-input">
+                            <label htmlFor="Paciente">Paciente:</label>
+                            <Field type="number" id="Paciente" name="Paciente" className="input-text" />
+                            <ErrorMessage name="Paciente" component="p" className="error"  />
+                        </div>
                     </div>
 
-                    <div>
-                        <label htmlFor="Dia_cita">Día de la Cita:</label>
-                        <Field type="text" id="Dia_cita" name="Dia_cita" />
-                        <ErrorMessage name="Dia_cita" component="p" style={{ color: 'red' }} />
+                    <div className="item-group">
+                        <div className="item-input">
+                            <label htmlFor="Medico">Médico:</label>
+                            <Field type="number" id="Medico" name="Medico" className="input-text"/>
+                            <ErrorMessage name="Medico" component="p" className="error" />
+                        </div>
                     </div>
 
-                    <div>
-                        <label htmlFor="motivo">Motivo:</label>
-                        <Field as="textarea" id="motivo" name="motivo" />
-                        <ErrorMessage name="motivo" component="p" style={{ color: 'red' }} />
-                    </div>
-
-                    <div>
-                        <label htmlFor="Paciente">Paciente:</label>
-                        <Field type="number" id="Paciente" name="Paciente" />
-                        <ErrorMessage name="Paciente" component="p" style={{ color: 'red' }} />
-                    </div>
-
-                    <div>
-                        <label htmlFor="Medico">Médico:</label>
-                        <Field type="number" id="Medico" name="Medico" />
-                        <ErrorMessage name="Medico" component="p" style={{ color: 'red' }} />
-                    </div>
-
-                    <button type="submit" disabled={isSubmitting}>
+                    <button type="submit" disabled={isSubmitting} className="submit">
                         {isSubmitting ? 'Enviando...' : 'Enviar'}
                     </button>
                 </Form>

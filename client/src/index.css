@@ -31,7 +31,7 @@ body{
   }
 
   .content{
-    padding: 24px !important;
+    padding: 0px !important;
   }
 
 *{
@@ -43,13 +43,4 @@ main{
     width: 90%;
     margin: auto;
     padding: 0px;
-}
-
-.submit{
-  background: linear-gradient(90deg, #4A4063 0%, #BFACC8 100%);
-  padding: 12px;
-  border-radius: 12px;
-  width: 250px;
-  margin: auto;
-  margin-top: 12px;
 }
