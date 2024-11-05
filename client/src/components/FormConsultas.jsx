@@ -1,12 +1,14 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { getAllConsultas, sendConsultas } from '../api/consulta.api';
+import Swal from 'sweetalert2'
 
 const FormConsulta = () => {
     const validationSchema = Yup.object({
-        codigo: Yup.string()
-        .required('El código es requerido')
-        .max(30, 'El código no debe superar los 30 caracteres'),
+        // codigo: Yup.string()
+        // .required('El código es requerido')
+        // .max(30, 'El código no debe superar los 30 caracteres'),
         diagnostico: Yup.string()
         .nullable()
         .min(5, 'El diagnóstico debe tener al menos 5 caracteres')
@@ -18,13 +20,39 @@ const FormConsulta = () => {
         .typeError('Debe seleccionar una cita válida')
     });
 
+    const handleSubmit = async (values, { resetForm }) => {
+        try {
+            const response = await sendConsultas(values);
+            console.log(response);
+            if (response.status === 200 || response.status === 201) {
+                Swal.fire({
+                  title: "Excelente!",
+                  text: "La consulta ha sido registrado!",
+                  icon: "success"
+                });
+                resetForm();
+            } else {
+                alert('Error al enviar el formulario');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "No se pudo registrar esta consulta!",
+              footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+    };
+
+
     
 
     return(
         <Formik
-            initialValues={{ codigo: '', diagnostico: '', sintomas: '', cita: ''}}
+            initialValues={{ diagnostico: '', sintomas: '', cita: ''}}
             validationSchema={validationSchema}
-            //on Submit={handleSubmit}
+            onSubmit={handleSubmit}
         >
             {({ isSubmitting }) => (
                 <Form className="form">

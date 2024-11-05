@@ -1,13 +1,15 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { getAllCitas, sendCitas } from '../api/cita.api';
+import Swal from 'sweetalert2'
 
 const FormCitas = () => {
     const validationSchema = Yup.object({
-        codigo_cita: Yup.string()
-            .required('El código de cita es requerido')
-            .min(3, 'El código debe tener al menos 3 caracteres')
-            .max(30, 'El código no debe exceder 30 caracteres'),
+        // codigo_cita: Yup.string()
+        //     .required('El código de cita es requerido')
+        //     .min(3, 'El código debe tener al menos 3 caracteres')
+        //     .max(30, 'El código no debe exceder 30 caracteres'),
         Fecha: Yup.date()
             .required('La fecha es requerida')
             .typeError('La fecha debe ser válida'),
@@ -27,14 +29,37 @@ const FormCitas = () => {
             .required('El médico es requerido')
             .typeError('Debe seleccionar un médico válido'),
     });
-
     
+    const handleSubmit = async (values, { resetForm }) => {
+        try {
+            const response = await sendCitas(values);
+            console.log(response);
+            if (response.status === 200 || response.status === 201) {
+                Swal.fire({
+                  title: "Excelente!",
+                  text: "La cita ha sido registrado!",
+                  icon: "success"
+                });
+                resetForm();
+            } else {
+                alert('Error al enviar el formulario');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "No se pudo registrar esta cita!",
+              footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+    };
 
     return(
         <Formik
-            initialValues={{ codigo_cita: '', Fecha: '', Hora_cita: '', Dia_cita: '', motivo: '', Paciente: '', Medico: ''}}
+            initialValues={{Fecha: '', Hora_cita: '', Dia_cita: '', motivo: '', Paciente: '', Medico: ''}}
             validationSchema={validationSchema}
-            //on Submit={handleSubmit}
+            onSubmit={handleSubmit}
         >
             {({ isSubmitting }) => (
                 <Form className="form">
