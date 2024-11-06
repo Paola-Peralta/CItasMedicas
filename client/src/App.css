@@ -42,14 +42,32 @@ body{
 
 .submit{
     background: linear-gradient(90deg, #4A4063 0%, #BFACC8 100%);
-    padding: 6px;
+    padding: 12px;
     border-radius: 12px;
     width: 200px;
     margin: auto;
     margin-top: 10px;
     font-size: 16px;
+    color: #eee;
   }
 
 .submit:hover {
     color: #ffffff;
+}
+
+.menu-pacientes{
+    text-align: end;
+    width: 100%;
+    margin-top: 20px;
+    
+}
+.tabla-pacientes td,
+.tabla-pacientes th{
+    padding: 12px;
+    text-wrap: nowrap;
+}
+
+.tabla-pacientes{
+    max-height: 200px;
+    overflow: auto;
 }

@@ -10,6 +10,7 @@ import { getAllTasks } from './api/farmacia.api'
 import Inicio from './pages/Inicio.jsx';
 import ListaPacientes from './pages/ListPacientes.jsx';
 import Citas from './pages/Citas.jsx';
+import AgregarPacientes from './pages/AgregarPacientes.jsx'
 import Consultas from './pages/Consultas.jsx';
 import Examenes from './pages/Examenes.jsx';
 import Resultados from './pages/Resultados.jsx';
@@ -35,6 +36,7 @@ function App() {
             <Layout.Content className="content">
               <Routes>
                 <Route path="/inicio" element={<Inicio />} />
+                <Route path="/agregar-pacientes" element={<AgregarPacientes />} />
                 <Route path="/pacientes" element={<ListaPacientes />} />
                 <Route path="/citas" element={<Citas />} />
                 <Route path="/consultas" element={<Consultas />} />

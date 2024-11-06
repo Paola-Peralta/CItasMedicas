@@ -1,12 +1,14 @@
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import React from "react";
+import { getAllexamen, sendexamen } from '../api/examen.api';
+import Swal from 'sweetalert2'
 
 const FormExamenes = () => {
     const validationSchema = Yup.object({
-        codigo: Yup.string()
-            .required('El código es requerido')
-            .max(30, 'El código no debe superar los 30 caracteres'),
+        // codigo: Yup.string()
+        //     .required('El código es requerido')
+        //     .max(30, 'El código no debe superar los 30 caracteres'),
         nombre: Yup.string()
             .required('El nombre del examen es requerido')
             .min(5, 'El nombre debe tener al menos 5 caracteres')
@@ -18,12 +20,36 @@ const FormExamenes = () => {
             .required('La consulta es requerida')
             .typeError('Debe seleccionar una consulta válida')
     });
-    
+    const handleSubmit = async (values, { resetForm }) => {
+        try {
+            const response = await sendexamen(values);
+            console.log(response);
+            if (response.status === 200 || response.status === 201) {
+                Swal.fire({
+                  title: "Excelente!",
+                  text: "El examen ha sido registrado!",
+                  icon: "success"
+                });
+                resetForm();
+            } else {
+                alert('Error al enviar el formulario');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "No se pudo registrar esta Examen!",
+              footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+    };
+
     return(
         <Formik
-            initialValues={{ codigo: '', nombre: '', fechaEntrega: '', consulta: ''}}
+            initialValues={{nombre: '', fechaEntrega: '', consulta: ''}}
             validationSchema={validationSchema}
-            //on Submit={handleSubmit}
+            onSubmit={handleSubmit}
         >
             {({ isSubmitting }) => (
                 <Form className="form">

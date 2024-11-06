@@ -1,12 +1,14 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { getAllresultado, sendresultado } from '../api/resultado.api';
+import Swal from 'sweetalert2'
 
 const FormResultados = () => {
     const validationSchema = Yup.object({
-        codigo: Yup.string()
-        .required('El código es requerido')
-        .max(30, 'El código no debe superar los 30 caracteres'),
+        // codigo: Yup.string()
+        // .required('El código es requerido')
+        // .max(30, 'El código no debe superar los 30 caracteres'),
         descripcion: Yup.string()
         .required('La descripción es requerida')
         .min(5, 'La descripción debe tener al menos 5 caracteres')
@@ -19,12 +21,38 @@ const FormResultados = () => {
         .typeError('Debe seleccionar un estado válido')
     });
 
+    const handleSubmit = async (values, { resetForm }) => {
+        try {
+            const response = await sendresultado(values);
+            console.log(response);
+            if (response.status === 200 || response.status === 201) {
+                Swal.fire({
+                  title: "Excelente!",
+                  text: "El resultado ha sido registrado!",
+                  icon: "success"
+                });
+                resetForm();
+            } else {
+                alert('Error al enviar el formulario');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "No se pudo registrar este resultado!",
+              footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+    };
+    
+
     
     return(
         <Formik
-            initialValues={{ codigo: '', descripcion: '', examen: '',  motivo: '', estado: ''}}
+            initialValues={{descripcion: '', examen: '',  motivo: '', estado: ''}}
             validationSchema={validationSchema}
-            //on Submit={handleSubmit}
+            onSubmit={handleSubmit}
         >
             {({ isSubmitting }) => (
                 <Form className="form">

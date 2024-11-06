@@ -1,10 +1,11 @@
 import React from "react";
-import TablaPaciente from '../components/TablaPaciente.jsx';
+import FormPacientes from '../components/FormPacientes.jsx';
 
 const ListaPacientes = () => {
     return(
         <div>
-            <TablaPaciente/>
+            <h1>Agregar Pacientes</h1>
+            <FormPacientes/>
 
         </div>
     );
