@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import { getAllTasks } from '../api/farmacia.api';
+import Pagination from "./Pagination.jsx";
 const SearchComponent = () => {
   //setear los hooks useState
   const [ users, setUsers ] = useState([])
   const [ search, setSearch ] = useState("")
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(2);
+
 
   const showData = async () => {
     const response = await getAllTasks();
@@ -22,6 +26,10 @@ const SearchComponent = () => {
    useEffect( ()=> {
     showData()
   }, [])
+
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = results.slice(firstPostIndex, lastPostIndex);
   
   //renderizamos la vista
   return (
@@ -35,7 +43,7 @@ const SearchComponent = () => {
                 </tr>
             </thead>
             <tbody>
-                { results.map( (user) => (
+                { currentPosts.map( (user) => (
                     <tr key={user.id}>
                         <td>{user.primerApellido}</td>
                         <td>{user.cedula}</td>
@@ -43,6 +51,12 @@ const SearchComponent = () => {
                 ))}
             </tbody>
         </table>
+        <Pagination
+                totalPosts={results.length}
+                postsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+            />
     </div>
   )
 }

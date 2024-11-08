@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getAllTasks } from '../api/farmacia.api';
 import { Link } from 'react-router-dom';
-
+import Pagination from "./Pagination.jsx";
 const PacienteTable = () => {
     const [pacientes, setPacientes] = useState([]);
     const [ search, setSearch ] = useState("")
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(2);
 
     const fetchPacientes = async () => {
         try {
@@ -27,6 +29,10 @@ const PacienteTable = () => {
         fetchPacientes();
     }, []);
 
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = results.slice(firstPostIndex, lastPostIndex);
+
     return (
         <div >
             <h2>Lista de Pacientes</h2>
@@ -45,7 +51,7 @@ const PacienteTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {results.map((paciente) => (
+                    {currentPosts.map((paciente) => (
                         <tr key={paciente.codigo}>
                             <td>{paciente.codigo}</td>
                             <td>{paciente.cedula}</td>
@@ -59,6 +65,12 @@ const PacienteTable = () => {
                     ))}
                 </tbody>
             </table>
+            <Pagination
+                totalPosts={results.length}
+                postsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+            />
 
             <div className="menu-pacientes">
                 <Link to="/agregar-pacientes"  className="submit">Agregar</Link >
