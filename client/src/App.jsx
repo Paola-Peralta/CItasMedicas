@@ -14,6 +14,7 @@ import AgregarPacientes from './pages/AgregarPacientes.jsx'
 import Consultas from './pages/Consultas.jsx';
 import Examenes from './pages/Examenes.jsx';
 import Resultados from './pages/Resultados.jsx';
+import BusquedaPacientes from './components/BusquedaPacientes.jsx';
 
 const { Header, Sider } = Layout;
 function App() {
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/consultas" element={<Consultas />} />
                 <Route path="/examenes" element={<Examenes />} />
                 <Route path="/resultados" element={<Resultados />} />
+                <Route path="/busqueda" element={<BusquedaPacientes />} />
               </Routes>
             </Layout.Content>
           </Layout>

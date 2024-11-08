@@ -4,22 +4,33 @@ import { Link } from 'react-router-dom';
 
 const PacienteTable = () => {
     const [pacientes, setPacientes] = useState([]);
+    const [ search, setSearch ] = useState("")
+
+    const fetchPacientes = async () => {
+        try {
+            const response = await getAllTasks();
+            setPacientes(response.data);
+        } catch (error) {
+            console.error("Error fetching pacientes:", error);
+        }
+    };
+
+    const searcher = (e) => {
+        setSearch(e.target.value)
+    }
+
+    const results = (search ?? '').trim() === '' 
+  ? pacientes 
+  : pacientes.filter(dato => dato.cedula?.includes(search));
 
     useEffect(() => {
-        const fetchPacientes = async () => {
-            try {
-                const response = await getAllTasks();
-                setPacientes(response.data);
-            } catch (error) {
-                console.error("Error fetching pacientes:", error);
-            }
-        };
         fetchPacientes();
     }, []);
 
     return (
         <div >
             <h2>Lista de Pacientes</h2>
+            <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control'/>
             <table className="tabla-pacientes">
                 <thead>
                     <tr>
@@ -34,7 +45,7 @@ const PacienteTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {pacientes.map((paciente) => (
+                    {results.map((paciente) => (
                         <tr key={paciente.codigo}>
                             <td>{paciente.codigo}</td>
                             <td>{paciente.cedula}</td>
