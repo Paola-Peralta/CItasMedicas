@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { getAllTasks } from '../api/farmacia.api';
-<<<<<<< HEAD
-
-=======
 import Pagination from "./Pagination.jsx";
->>>>>>> 4506f22ffbccb1e455e30e57de1de0685d90abf0
+
 const SearchComponent = () => {
   //setear los hooks useState
   const [ users, setUsers ] = useState([])

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getAllCitas } from '../api/cita.api';
 import { Link } from 'react-router-dom';
+import Pagination from "./Pagination.jsx";
 
 const CitaTabla = () => {
     const [citas, setCitas] = useState([]);
+    const [ search, setSearch ] = useState("")
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(10);
 
     const fetchCitas = async () => {
         try {
@@ -14,13 +18,26 @@ const CitaTabla = () => {
         }
     };
 
+    const searcher = (e) => {
+        setSearch(e.target.value)
+    }
+
+    const results = (search ?? '').trim() === '' 
+    ? citas 
+    : citas.filter(dato => dato.codigo_cita?.includes(search));
+
     useEffect(() => {
         fetchCitas();
     }, []);
 
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = results.slice(firstPostIndex, lastPostIndex);
+
     return (
         <div>
             <h2>Lista de citas</h2>
+            <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control'/>
             <table className="tabla">
                 <thead>
                     <tr>
@@ -33,7 +50,7 @@ const CitaTabla = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {citas.map((citas) => (
+                    {currentPosts.map((citas) => (
                             <tr key={citas.id}>
                                 <td>{citas.codigo_cita}</td>
                                 <td>{citas.Fecha}</td>
@@ -45,6 +62,14 @@ const CitaTabla = () => {
                         ))}
                     </tbody>
             </table>
+
+            <Pagination
+                totalPosts={results.length}
+                postsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+            />
+            
 
             <div className="menu-btn">
                 <Link to="/agregar-citas"  className="submit">Agregar Cita</Link >

@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { getAllTasks } from '../api/farmacia.api';
 import { Link } from 'react-router-dom';
 import Pagination from "./Pagination.jsx";
+
 const PacienteTable = () => {
     const [pacientes, setPacientes] = useState([]);
     const [ search, setSearch ] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(2);
+    const [postsPerPage, setPostsPerPage] = useState(10);
 
     const fetchPacientes = async () => {
         try {
@@ -22,8 +23,8 @@ const PacienteTable = () => {
     }
 
     const results = (search ?? '').trim() === '' 
-  ? pacientes 
-  : pacientes.filter(dato => dato.cedula?.includes(search));
+    ? pacientes 
+    : pacientes.filter(dato => dato.cedula?.includes(search));
 
     useEffect(() => {
         fetchPacientes();

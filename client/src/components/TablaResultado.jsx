@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getAllresultado } from '../api/resultado.api';
 import { Link } from 'react-router-dom';
+import Pagination from "./Pagination.jsx";
 
 const ResultadoTabla = () => {
     const [resultado, setResultado] = useState([]);
+    const [ search, setSearch ] = useState("")
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(10);
 
     const fetchResultado = async () => {
         try {
@@ -14,6 +18,18 @@ const ResultadoTabla = () => {
         }
     };
 
+    const searcher = (e) => {
+        setSearch(e.target.value)
+    }
+
+    const results = (search ?? '').trim() === '' 
+    ? resultado 
+    : resultado.filter(dato => dato.codigo?.includes(search));
+
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = results.slice(firstPostIndex, lastPostIndex);
+
     useEffect(() => {
         fetchResultado();
     }, []);
@@ -21,6 +37,7 @@ const ResultadoTabla = () => {
     return(
         <div>
             <h2>Lista de Resultados</h2>
+            <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control'/>
             <table className="tabla">
                 <thead>
                     <tr>
@@ -31,7 +48,7 @@ const ResultadoTabla = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {resultado.map((resultado) => (
+                    {currentPosts.map((resultado) => (
                             <tr key={resultado.id}>
                                 <td>{resultado.codigo}</td>
                                 <td>{resultado.descripcion}</td>
@@ -42,6 +59,13 @@ const ResultadoTabla = () => {
                 </tbody>
             </table>
 
+            <Pagination
+                totalPosts={results.length}
+                postsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+            />
+            
             <div className="menu-btn">
                 <Link to="/agregar-resultado"  className="submit">Agregar Examen</Link >
             </div>
