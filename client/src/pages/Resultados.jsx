@@ -1,14 +1,13 @@
 import React from "react";
-import FormResultados from '../components/FormResultados.jsx';
+import TablaResultado from '../components/TablaResultado.jsx';
 
-const Resultados = () => {
+const ListarResultados = () => {
     return(
         <div>
-            <h1>Resultado de examenes</h1>
-            <FormResultados/>
+            <TablaResultado/>
 
         </div>
     );
 };
 
-export default  Resultados;
+export default  ListarResultados;

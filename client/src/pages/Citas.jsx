@@ -1,12 +1,12 @@
 import React from "react";
-import FormCitas from '../components/FormCitas.jsx';
-const Citas = () => {
+import TablaCitas from '../components/TablaCitas.jsx';
+
+const ListarCitas = () => {
     return(
         <div>
-            <h1>Citas</h1>
-            <FormCitas/>
+            <TablaCitas/>
         </div>
     );
 };
 
-export default Citas;
+export default ListarCitas;

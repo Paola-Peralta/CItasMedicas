@@ -31,7 +31,7 @@ const PacienteTable = () => {
         <div >
             <h2>Lista de Pacientes</h2>
             <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control'/>
-            <table className="tabla-pacientes">
+            <table className="tabla">
                 <thead>
                     <tr>
                         <th>Código</th>
@@ -60,7 +60,7 @@ const PacienteTable = () => {
                 </tbody>
             </table>
 
-            <div className="menu-pacientes">
+            <div className="menu-btn">
                 <Link to="/agregar-pacientes"  className="submit">Agregar</Link >
             </div>
         </div>

@@ -98,7 +98,6 @@ class Cita(models.Model):
     codigo_cita = models.CharField(verbose_name='Código', max_length=30, unique=True, blank=True)
     Fecha = models.DateField(verbose_name= 'Fecha')
     Hora_cita = models.DateTimeField(verbose_name= 'Hora')
-    Dia_cita = models.CharField(verbose_name='Día', max_length=20)
     motivo = models.TextField(blank=True, null=True)
     Paciente = models.ForeignKey(Paciente, verbose_name='Paciente', on_delete=models.PROTECT)
     Medico = models.ForeignKey(Medico, verbose_name='Medico', on_delete=models.PROTECT)

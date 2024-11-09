@@ -1,12 +1,12 @@
 import React from "react";
-import FormConsultas from '../components/FormConsultas.jsx';
-const Consultas = () => {
+import TablaConsultas from '../components/TablaConsulta.jsx';
+
+const ListarConsultas = () => {
     return(
         <div>
-            <h1>Consultas</h1>
-            <FormConsultas/>
+            <TablaConsultas/>
         </div>
     );
 };
 
-export default Consultas;
+export default ListarConsultas;

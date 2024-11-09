@@ -18,7 +18,7 @@ class MedicoAdmin(admin.ModelAdmin):
 
 @admin.register(Cita)
 class CitaAdmin(admin.ModelAdmin):
-    list_display = ('codigo_cita', 'Fecha', 'Hora_cita', 'Dia_cita', 'motivo', 'Paciente', 'Medico')
+    list_display = ('codigo_cita', 'Fecha', 'Hora_cita', 'motivo', 'Paciente', 'Medico')
     search_fields = ('codigo_cita',)
 
 @admin.register(Consulta)

@@ -1,13 +1,12 @@
 import React from "react";
-import FormExamenes from '../components/FormExamenes.jsx';
+import TablaExamenes from '../components/TablaExamenes.jsx';
 
-const Examenes = () => {
+const ListarExamenes = () => {
     return(
         <div>
-            <h1>Examenes</h1>
-            <FormExamenes/>
+            <TablaExamenes/>
         </div>
     );
 };
 
-export default Examenes;
+export default ListarExamenes;

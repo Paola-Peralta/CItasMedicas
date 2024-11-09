@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { getAllTasks } from '../api/farmacia.api';
+
 const SearchComponent = () => {
   //setear los hooks useState
   const [ users, setUsers ] = useState([])
