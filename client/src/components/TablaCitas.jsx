@@ -7,7 +7,7 @@ const CitaTabla = () => {
     const [citas, setCitas] = useState([]);
     const [ search, setSearch ] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(10);
+    const [postsPerPage, setPostsPerPage] = useState(7);
 
     const fetchCitas = async () => {
         try {

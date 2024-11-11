@@ -1,12 +1,12 @@
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import { DiffOutlined, FileDoneOutlined, HeartOutlined, HomeOutlined, ReconciliationOutlined, SettingOutlined, UsergroupAddOutlined } from '@ant-design/icons'
+import { DiffOutlined, FileDoneOutlined, HeartOutlined, UserSwitchOutlined,HomeOutlined, ReconciliationOutlined, SettingOutlined, UsergroupAddOutlined } from '@ant-design/icons'
 
 const MenuList = () =>{
     return(
         <Menu className='menu-bar' style={{ backgroundColor: "#BFACC8", color: "#000" }}>
-            <Menu.Item key="inicio" icon={<HomeOutlined/>}> 
-                <Link to="/inicio">Inicio</Link>
+            <Menu.Item key="medicos" icon={<UserSwitchOutlined/>}> 
+                <Link to="/medicos">Medicos</Link>
             </Menu.Item>
             <Menu.Item key='pacientes' icon={<UsergroupAddOutlined/>}>
                 <Link to="/pacientes">Pacientes</Link>

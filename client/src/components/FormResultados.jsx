@@ -6,9 +6,6 @@ import Swal from 'sweetalert2'
 
 const FormResultados = () => {
     const validationSchema = Yup.object({
-        // codigo: Yup.string()
-        // .required('El código es requerido')
-        // .max(30, 'El código no debe superar los 30 caracteres'),
         descripcion: Yup.string()
         .required('La descripción es requerida')
         .min(5, 'La descripción debe tener al menos 5 caracteres')

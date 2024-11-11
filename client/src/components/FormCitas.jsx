@@ -62,13 +62,8 @@ const FormCitas = () => {
             onSubmit={handleSubmit}
         >
             {({ isSubmitting }) => (
-                <Form className="form">
 
-                    {/* <div>
-                        <label htmlFor="codigo_cita">Código de Cita:</label>
-                        <Field type="text" id="codigo_cita" name="codigo_cita" />
-                        <ErrorMessage name="codigo_cita" component="p" style={{ color: 'red' }} />
-                    </div> */}
+                <Form className="form">
                     <div className="item-group">
                         <div className="item-input">
                             <label htmlFor="Fecha">Fecha:</label>
@@ -83,12 +78,6 @@ const FormCitas = () => {
                             <label htmlFor="Hora_cita">Hora de la Cita:</label>
                             <Field type="datetime-local" id="Hora_cita" name="Hora_cita" className="input-date " />
                             <ErrorMessage name="Hora_cita" component="p" className="error"  />
-                        </div>
-
-                        <div className="item-input">
-                            <label htmlFor="Dia_cita">Día de la Cita:</label>
-                            <Field type="text" id="Dia_cita" name="Dia_cita" className="input-text" />
-                            <ErrorMessage name="Dia_cita" component="p" className="error" />
                         </div>
                     </div>
 

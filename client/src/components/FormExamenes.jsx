@@ -6,9 +6,6 @@ import Swal from 'sweetalert2'
 
 const FormExamenes = () => {
     const validationSchema = Yup.object({
-        // codigo: Yup.string()
-        //     .required('El código es requerido')
-        //     .max(30, 'El código no debe superar los 30 caracteres'),
         nombre: Yup.string()
             .required('El nombre del examen es requerido')
             .min(5, 'El nombre debe tener al menos 5 caracteres')
@@ -53,11 +50,7 @@ const FormExamenes = () => {
         >
             {({ isSubmitting }) => (
                 <Form className="form">
-                    {/* <div>
-                        <label htmlFor="codigo">Código del Examen:</label>
-                        <Field type="text" id="codigo" name="codigo" />
-                        <ErrorMessage name="codigo" component="p" style={{ color: 'red' }} />
-                    </div> */}
+
                     <div className="item-group">
                         <div className="item-input">
                             <label htmlFor="nombre">Nombre del Examen:</label>

@@ -7,7 +7,7 @@ const PacienteTable = () => {
     const [pacientes, setPacientes] = useState([]);
     const [ search, setSearch ] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(10);
+    const [postsPerPage, setPostsPerPage] = useState(6);
 
     const fetchPacientes = async () => {
         try {

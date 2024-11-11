@@ -6,9 +6,7 @@ import Swal from 'sweetalert2'
 
 const FormConsulta = () => {
     const validationSchema = Yup.object({
-        // codigo: Yup.string()
-        // .required('El código es requerido')
-        // .max(30, 'El código no debe superar los 30 caracteres'),
+
         diagnostico: Yup.string()
         .nullable()
         .min(5, 'El diagnóstico debe tener al menos 5 caracteres')
@@ -56,11 +54,6 @@ const FormConsulta = () => {
         >
             {({ isSubmitting }) => (
                 <Form className="form">
-                {/* <div>
-                    <label htmlFor="codigo">Código de la Consulta:</label>
-                    <Field type="text" id="codigo" name="codigo" />
-                    <ErrorMessage name="codigo" component="p" className="error" />
-                </div> */}
 
                 <div className="item-group">
                     <div className="item-input">

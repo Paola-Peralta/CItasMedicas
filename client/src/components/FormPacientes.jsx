@@ -10,9 +10,6 @@ import '../App.css'
 const FormPacientes = () => {
     // Definir el esquema de validación con Yup
     const validationSchema = Yup.object({
-    // codigo: Yup.string()
-    // .required('El codigo es requerido')
-    // .min(3, 'El codigo debe tener al menos 3 caracteres'),
     cedula: Yup.string()
     .required('La cédula es requerido')
     .min(15, 'La cédula debe tener al menos 15 caracteres'),
@@ -72,12 +69,6 @@ const FormPacientes = () => {
         <Form className="form">
 
           <div className="item-group">
-          {/* <div className="item-input">
-            <label htmlFor="codigo" className="label"> Código: </label>
-            <Field type="text" id="codigo" name="codigo" className="input-text" />
-            <ErrorMessage name="codigo" component="p" className="error" />
-          </div> */}
-
           <div className="item-input">
             <label htmlFor="cedula" className="label" >Cédula:</label>
             <Field type="text" id="cedula" name="cedula" className="input-text"/>

@@ -7,7 +7,7 @@ const ConsultaTabla = () => {
     const [consultas, setConsultas] = useState([]);
     const [ search, setSearch ] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(10);
+    const [postsPerPage, setPostsPerPage] = useState(7);
 
     const fetchConsultas = async () => {
         try {
