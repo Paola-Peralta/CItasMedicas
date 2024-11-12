@@ -49,6 +49,7 @@ const PacienteTable = () => {
                         <th>Fecha de Nacimiento</th>
                         <th>Dirección</th>
                         <th>Teléfono</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,6 +63,9 @@ const PacienteTable = () => {
                             <td>{paciente.fecha_nacimiento}</td>
                             <td>{paciente.direccion}</td>
                             <td>{paciente.telefono}</td>
+                            <td>
+                                <Link to={`/paciente/${paciente.id}`} className="btn btn-primary">Ver</Link>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -74,7 +78,7 @@ const PacienteTable = () => {
             />
 
             <div className="menu-btn">
-                <Link to="/agregar-pacientes"  className="submit">Agregar</Link >
+                <Link to="/agregar-pacientes"  className="submit">Agregar</Link>
             </div>
         </div>
 

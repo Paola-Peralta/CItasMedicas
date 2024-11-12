@@ -49,6 +49,7 @@ function App() {
                 <Route path="/agregar-examen" element={<AgregarExamenes />} />
                 <Route path="/resultados" element={<Resultados />} />
                 <Route path="/agregar-resultado" element={<AgregarResultado />} />
+                <Route path="/paciente/:id" element={<AgregarCitas />} />
               </Routes>
             </Layout.Content>
           </Layout>

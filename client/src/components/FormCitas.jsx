@@ -1,24 +1,28 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import { getAllCitas, sendCitas } from '../api/cita.api';
+import {getAllmedicos, getmedico } from "../api/medicos.api";
 import Swal from 'sweetalert2'
+import {useNavigate, useParams} from 'react-router-dom'
+import MedicoSelect from "./MedicoSelect.jsx";
 
 const FormCitas = () => {
+
+    const navigate = useNavigate()
+    const { id } = useParams();
+
     const validationSchema = Yup.object({
-        // codigo_cita: Yup.string()
-        //     .required('El código de cita es requerido')
-        //     .min(3, 'El código debe tener al menos 3 caracteres')
-        //     .max(30, 'El código no debe exceder 30 caracteres'),
+        codigo_cita: Yup.string()
+            .required('El código de cita es requerido')
+            .min(3, 'El código debe tener al menos 3 caracteres')
+            .max(30, 'El código no debe exceder 30 caracteres'),
         Fecha: Yup.date()
             .required('La fecha es requerida')
             .typeError('La fecha debe ser válida'),
-        Hora_cita: Yup.date()
+        Hora_cita: Yup.string()
             .required('La hora de la cita es requerida')
             .typeError('La hora de la cita debe ser válida'),
-        Dia_cita: Yup.string()
-            .required('El día de la cita es requerido')
-            .max(20, 'El día de la cita no debe exceder 20 caracteres'),
         motivo: Yup.string()
             .nullable()
             .max(500, 'El motivo no debe exceder 500 caracteres'),
@@ -32,6 +36,7 @@ const FormCitas = () => {
     
     const handleSubmit = async (values, { resetForm }) => {
         try {
+            console.log('Valores del formulario:', values)
             const response = await sendCitas(values);
             console.log(response);
             if (response.status === 200 || response.status === 201) {
@@ -57,13 +62,22 @@ const FormCitas = () => {
 
     return(
         <Formik
-            initialValues={{Fecha: '', Hora_cita: '', Dia_cita: '', motivo: '', Paciente: '', Medico: ''}}
+            initialValues={{codigo_cita: '', Fecha: '', Hora_cita: '', motivo: '', Paciente: `${id}`, Medico: ''}}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
         >
-            {({ isSubmitting }) => (
+            {({ setFieldValue, isSubmitting, values}) => {
+                return (
 
                 <Form className="form">
+                    <div className="item-group">
+                        <div className="item-input">
+                            <label htmlFor="codigo_cita">codigo_cita:</label>
+                            <Field type="text" id="codigo_cita" name="codigo_cita" className="input-text"/>
+                            <ErrorMessage name="codigo_cita" component="p" className="error" />
+                        </div>                        
+                    </div>
+
                     <div className="item-group">
                         <div className="item-input">
                             <label htmlFor="Fecha">Fecha:</label>
@@ -91,24 +105,30 @@ const FormCitas = () => {
                     <div className="item-group">
                         <div className="item-input">
                             <label htmlFor="Paciente">Paciente:</label>
-                            <Field type="number" id="Paciente" name="Paciente" className="input-text" />
+                            <Field type="number" id="Paciente" name="Paciente" className="input-text"/>
                             <ErrorMessage name="Paciente" component="p" className="error"  />
                         </div>
                     </div>
 
-                    <div className="item-group">
+                    {/* <div className="item-group">
                         <div className="item-input">
                             <label htmlFor="Medico">Médico:</label>
                             <Field type="number" id="Medico" name="Medico" className="input-text"/>
                             <ErrorMessage name="Medico" component="p" className="error" />
                         </div>
+                    </div> */}
+                    
+                    <div>
+                        <label htmlFor="Medico">Médico:</label>
+                        <MedicoSelect onMedicoSelect={(medicoId) => setFieldValue("Medico", medicoId)} />
+                        <ErrorMessage name="Medico" component="p" className="error" />
                     </div>
-
                     <button type="submit" disabled={isSubmitting} className="submit">
                         {isSubmitting ? 'Enviando...' : 'Enviar'}
                     </button>
                 </Form>
-            )}
+                );
+            }}
       </Formik>
     );
 };
