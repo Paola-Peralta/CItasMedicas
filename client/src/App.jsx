@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './index.css'
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'; // Cambia MenufoldOutlined a MenuFoldOutlined
 import Inicio from './pages/Inicio.jsx';
+import AgregarMedicos from './pages/AgregarMedicos.jsx'
 import ListaPacientes from './pages/ListPacientes.jsx';
 import Citas from './pages/Citas.jsx';
 import AgregarCitas from './pages/AgregarCitas.jsx'
@@ -38,7 +39,8 @@ function App() {
             
             <Layout.Content className="content">
               <Routes>
-                <Route path="/inicio" element={<Inicio />} />
+                <Route path="/medicos" element={<Inicio />} />
+                <Route path="/agregar-medicos" element={<AgregarMedicos />} />
                 <Route path="/agregar-pacientes" element={<AgregarPacientes />} />
                 <Route path="/pacientes" element={<ListaPacientes />} />
                 <Route path="/citas" element={<Citas />} />

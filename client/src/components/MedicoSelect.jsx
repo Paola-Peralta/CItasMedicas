@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
-import axios from 'axios';
 import {getAllmedicos, getmedico } from "../api/medicos.api";
 
 

@@ -1,11 +1,12 @@
 import React from "react";
+import TablaMedicos from '../components/TablaMedicos.jsx';
 
-const Inicio = () => {
+const ListaMedicos = () => {
     return(
         <div>
-            <h1>Inicio</h1>
+            <TablaMedicos/>
         </div>
     );
 };
 
-export default Inicio;
+export default ListaMedicos;
