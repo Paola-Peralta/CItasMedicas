@@ -43,6 +43,7 @@ urlpatterns = [
     # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('catalogos/', include('apps.catalogos.urls')),
     path('examen/', include('apps.examen.urls')),
-    path('', include('apps.usuario.urls')),
-    path('usuario/', include('apps.usuario.urls')),
+    # path('', include('apps.usuario.urls')),
+    path('usuario/', include("apps.usuario.urls")),
+    # path('usuario/', include('apps.usuario.urls')),
 ]
