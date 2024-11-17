@@ -2,22 +2,24 @@
 .vh-100 {
     height: 100vh;
   }
-  .login-background {
+  
+  .register-background {
     background-color: #4A4063;
   }
-  .login-card {
+  
+  .register-card {
     border-radius: 1rem;
-    width: 80%;  /* Aumenta el ancho de la tarjeta */
+    width: 80%;
     margin: auto;
-    height: 463px;
+    height: 525px;
+  }
+  
+  .register-img {
+    border-radius: 1rem 0 0 1rem;
+    height: 525px;
+    object-fit: cover;
   }
 
-  .login-img {
-    border-radius: 1rem 0 0 1rem;
-  }
-  .login-icon {
-    color: #ff6219;
-  }
   
   /* Form Styles */
   .form-control {
@@ -37,7 +39,6 @@
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
     width: 100%;
     font-size: 1.1rem;
   }
@@ -47,8 +48,6 @@
     border-color: #333;
   }
   
-  /* Text Styles */
   .text-muted {
     font-size: 0.875rem;
   }
-  

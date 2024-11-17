@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../api/usuario";
 import { AuthContext } from "../context/AuthContext";
 import "../pages/login.css";
+import imagen from '../utils/salud.jpeg';
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
@@ -30,7 +31,7 @@ const Login = () => {
               <div className="row g-0">
                 <div className="col-md-6 col-lg-5 d-none d-md-block">
                   <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                    src={imagen}
                     alt="login form"
                     className="img-fluid login-img"
                   />
@@ -68,9 +69,6 @@ const Login = () => {
                           Iniciar sesión
                         </button>
                       </div>
-                      <a className="small text-muted" href="#!">
-                        Olvidastes contraseña?
-                      </a>
                       <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
                         No tienes cuenta?{" "}
                         <a href="/register" style={{ color: "#393f81" }}>
