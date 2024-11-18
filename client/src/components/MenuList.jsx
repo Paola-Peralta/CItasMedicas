@@ -1,8 +1,13 @@
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import { DiffOutlined, FileDoneOutlined, HeartOutlined, UserSwitchOutlined,HomeOutlined, ReconciliationOutlined, SettingOutlined, UsergroupAddOutlined } from '@ant-design/icons'
+// import { AuthContext } from '../context/AuthContext';
+// import { useContext } from 'react';
+
 
 const MenuList = () =>{
+    // const { user, logout } = useContext(AuthContext);
+    
     return(
         <Menu className='menu-bar' style={{ backgroundColor: "#BFACC8", color: "#000" }}>
             <Menu.Item key="medicos" icon={<UserSwitchOutlined/>}> 
