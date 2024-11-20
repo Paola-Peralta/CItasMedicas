@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getAllConsultas } from '../api/consulta.api';
+import { getAllCitas } from '../api/cita.api';
 import { Link } from 'react-router-dom';
 import Pagination from "./Pagination.jsx";
 
 const ConsultaTabla = () => {
     const [consultas, setConsultas] = useState([]);
+    const [citas, setCitas] = useState([]);
     const [ search, setSearch ] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(7);
@@ -18,6 +20,15 @@ const ConsultaTabla = () => {
         }
     };
 
+    const fetchCitas = async () => {
+        try {
+            const response = await getAllCitas();
+            setCitas(response.data);
+        } catch (error) {
+            console.error("Error fetching citas:", error);
+        }
+    };
+
     const searcher = (e) => {
         setSearch(e.target.value)
     }
@@ -28,11 +39,17 @@ const ConsultaTabla = () => {
 
     useEffect(() => {
         fetchConsultas();
+        fetchCitas();
     }, []);
 
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
     const currentPosts = results.slice(firstPostIndex, lastPostIndex);
+
+    const getCitaNombre = (citaId) => {
+        const cita = citas.find(e => e.id === citaId);
+        return cita ? cita.motivo : "Desconocida"; // Si no se encuentra, retorna "Desconocida"
+    };
     
     return(
         <div>
@@ -44,7 +61,7 @@ const ConsultaTabla = () => {
                         <th>Código</th>
                         <th>Diagnostico</th>
                         <th>Sintomas</th>
-                        <th>Cita</th>
+                        <th>Motivo de cita</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +70,7 @@ const ConsultaTabla = () => {
                                 <td>{consultas.codigo}</td>
                                 <td>{consultas.diagnostico}</td>
                                 <td>{consultas.sintomas}</td>
-                                <td>{consultas.cita}</td>
+                                <td>{getCitaNombre(consultas.cita)}</td>
                             </tr>
                         ))}
                 </tbody>

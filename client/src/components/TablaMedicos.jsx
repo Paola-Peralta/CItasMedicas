@@ -55,9 +55,9 @@ const MedicoTabla = () => {
         <div >
             <h3>Lista de Médicos</h3>
             <input value={search} onChange={searcher} type="text" placeholder='Search' className='form-control'/>
-            <table className="tabla">
+            <table className="medicos">
                 <thead>
-                    <tr>
+                    <tr >
                         <th>Código</th>
                         <th>Nombres</th>
                         <th>Primer Apellido</th>

@@ -1,9 +1,7 @@
 import React from "react";
-import { useEffect, useState } from "react"
 import { getAllTasks, sendPaciente } from '../api/farmacia.api';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import Swal from 'sweetalert2'
 import '../App.css'
 

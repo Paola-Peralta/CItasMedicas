@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from apps.examen.models import Examen, Resultado
+from apps.examen.models import Examen, Resultado, Estado
 
 class ExamenSerializer(ModelSerializer):
     class Meta:
@@ -11,3 +11,8 @@ class ResultadoSerializer(ModelSerializer):
         model = Resultado
         fields = '__all__'
         read_only_fields = ('codigo',)
+
+class EstadoSerializer(ModelSerializer):
+    class Meta:
+        model = Estado
+        fields = '__all__'

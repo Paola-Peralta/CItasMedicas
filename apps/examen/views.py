@@ -12,3 +12,9 @@ class ExamenModelViewSet(ModelViewSet):
 class ResultadoModelViewSet(ModelViewSet):
     queryset = Resultado.objects.all()
     serializer_class = ResultadoSerializer
+
+
+#Un ViewSet que maneja las operaciones CRUD para el modelo Estado.
+class EstadoModelViewSet(ModelViewSet):
+    queryset = Estado.objects.all()
+    serializer_class = EstadoSerializer
