@@ -1,0 +1,21 @@
+[33m405c4e3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mlogin[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{0}: checkout: moving from master to login
+[33m405c4e3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mlogin[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{1}: checkout: moving from login to master
+[33m405c4e3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mlogin[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{2}: reset: moving to HEAD
+[33m405c4e3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mlogin[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{3}: reset: moving to 405c4e3
+[33m5584e2d[m HEAD@{4}: reset: moving to 5584e2d
+[33m6bad3b0[m[33m ([m[1;31morigin/login[m[33m)[m HEAD@{5}: checkout: moving from master to login
+[33m405c4e3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mlogin[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{6}: pull origin master: Fast-forward
+[33mfe1bcbd[m HEAD@{7}: reset: moving to HEAD~1
+[33m5584e2d[m HEAD@{8}: commit: updated 1
+[33mfe1bcbd[m HEAD@{9}: checkout: moving from login to master
+[33m6bad3b0[m[33m ([m[1;31morigin/login[m[33m)[m HEAD@{10}: reset: moving to HEAD
+[33m6bad3b0[m[33m ([m[1;31morigin/login[m[33m)[m HEAD@{11}: commit: modificated
+[33m66abb52[m HEAD@{12}: commit: login and register
+[33m76e9518[m HEAD@{13}: commit: pt2 login
+[33ma04ba92[m HEAD@{14}: commit: arreglando sidebar
+[33m4344ce2[m HEAD@{15}: commit: login pt1
+[33m494eb4a[m HEAD@{16}: commit: urls, views configurado
+[33m5eb4aaa[m HEAD@{17}: commit: added authentications jwt
+[33mfe1bcbd[m HEAD@{18}: checkout: moving from master to login
+[33mfe1bcbd[m HEAD@{19}: commit: YAAAAA
+[33mff86ca3[m HEAD@{20}: clone: from https://github.com/Paola-Peralta/CItasMedicas.git
