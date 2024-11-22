@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getAllexamen } from '../api/examen.api';
+import { getAllConsultas } from '../api/consulta.api';
 import { Link } from 'react-router-dom';
 import Pagination from "./Pagination.jsx";
 
 const ExamenesTabla = () => {
     const [examenes, setExamenes] = useState([]);
+    const [consultas, setConsultas] = useState([]);
     const [ search, setSearch ] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(7);
@@ -13,6 +15,15 @@ const ExamenesTabla = () => {
         try {
             const response = await getAllexamen();
             setExamenes(response.data);
+        } catch (error) {
+            console.error("Error fetching consultas:", error);
+        }
+    };
+
+    const fetchConsultas = async () => {
+        try {
+            const response = await getAllConsultas();
+            setConsultas(response.data);
         } catch (error) {
             console.error("Error fetching consultas:", error);
         }
@@ -28,12 +39,17 @@ const ExamenesTabla = () => {
 
     useEffect(() => {
         fetchExamenes();
+        fetchConsultas();
     }, []);
 
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
     const currentPosts = results.slice(firstPostIndex, lastPostIndex);
 
+    const getConsulta = (consultasId) => {
+        const consulta = consultas.find(e => e.id === consultasId);
+        return consulta ? consulta.diagnostico : "Desconocida"; // Si no se encuentra, retorna "Desconocida"
+    };
     return(
         <div>
             <h2>Lista de Examenes</h2>
@@ -44,7 +60,7 @@ const ExamenesTabla = () => {
                         <th>Código</th>
                         <th>Nombre Examen</th>
                         <th>Fecha entrega</th>
-                        <th>Consulta</th>
+                        <th>Diagnostico de la consulta</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +69,7 @@ const ExamenesTabla = () => {
                                 <td>{examenes.codigo}</td>
                                 <td>{examenes.nombre}</td>
                                 <td>{examenes.fechaEntrega}</td>
-                                <td>{examenes.consulta}</td>
+                                <td>{getConsulta(examenes.consulta)}</td>
                             </tr>
                         ))}
                 </tbody>

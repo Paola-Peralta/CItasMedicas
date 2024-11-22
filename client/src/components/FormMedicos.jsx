@@ -91,11 +91,13 @@ const FormMedicos= () => {
               </div>
               </div>
 
-              <div>
+              <div className="item-group">
+                <div className="item-input">
                   <label htmlFor="Especialidad">Especialidad:</label>
                   <EspecilidadSelect onEspecialidadSelect={(especialidadId) => setFieldValue("especialidad", especialidadId)} />
                   <ErrorMessage name="Especialidad" component="p" className="error" />
                 </div>
+              </div>
       
               <button type="submit" disabled={isSubmitting} className="submit">
                 {isSubmitting ? 'Enviando...' : 'Enviar'}

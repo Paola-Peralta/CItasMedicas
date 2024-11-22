@@ -2,10 +2,10 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import { getAllCitas, sendCitas } from '../api/cita.api';
-import {getAllmedicos, getmedico } from "../api/medicos.api";
 import Swal from 'sweetalert2'
 import {useNavigate, useParams} from 'react-router-dom'
 import MedicoSelect from "./MedicoSelect.jsx";
+import '../App.css'
 
 const FormCitas = () => {
 
@@ -16,7 +16,7 @@ const FormCitas = () => {
         codigo_cita: Yup.string()
             .required('El código de cita es requerido')
             .min(3, 'El código debe tener al menos 3 caracteres')
-            .max(30, 'El código no debe exceder 30 caracteres'),
+            .max(30, 'El código no debe exceder 3 caracteres'),
         Fecha: Yup.date()
             .required('La fecha es requerida')
             .typeError('La fecha debe ser válida'),

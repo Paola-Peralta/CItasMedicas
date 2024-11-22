@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getAllresultado } from '../api/resultado.api';
+import { getAllexamen } from '../api/examen.api';
 import { Link } from 'react-router-dom';
 import Pagination from "./Pagination.jsx";
 
 const ResultadoTabla = () => {
     const [resultado, setResultado] = useState([]);
-    const [ search, setSearch ] = useState("")
+    const [ search, setSearch ] = useState("");
+    const [examenes, setExamenes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(10);
 
@@ -13,6 +15,15 @@ const ResultadoTabla = () => {
         try {
             const response = await getAllresultado();
             setResultado(response.data);
+        } catch (error) {
+            console.error("Error fetching consultas:", error);
+        }
+    };
+
+    const fetchExamenes = async () => {
+        try {
+            const response = await getAllexamen();
+            setExamenes(response.data);
         } catch (error) {
             console.error("Error fetching consultas:", error);
         }
@@ -32,7 +43,13 @@ const ResultadoTabla = () => {
 
     useEffect(() => {
         fetchResultado();
+        fetchExamenes();
     }, []);
+
+    const getExamen = (examenesId) => {
+        const examen = examenes.find(e => e.id === examenesId);
+        return examen ? examen.nombre : "Desconocido"; // Si no se encuentra, retorna "Desconocida"
+    };
 
     return(
         <div>
@@ -43,7 +60,7 @@ const ResultadoTabla = () => {
                     <tr>
                         <th>Código</th>
                         <th>Descripción</th>
-                        <th>Examen</th>
+                        <th>Nombre del Examen</th>
                         <th>Estado</th>
                     </tr>
                 </thead>
@@ -52,7 +69,7 @@ const ResultadoTabla = () => {
                             <tr key={resultado.id}>
                                 <td>{resultado.codigo}</td>
                                 <td>{resultado.descripcion}</td>
-                                <td>{resultado.examen}</td>
+                                <td>{getExamen(resultado.examen)}</td>
                                 <td>{resultado.estado}</td>
                             </tr>
                         ))}

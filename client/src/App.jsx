@@ -31,14 +31,14 @@ function AppLayout({ children }) {
                 <MenuList />
             </Sider>
             <Layout>
-                <Header className="head">
+                { <Header className="head">
                     <Button
                         type="text"
                         className="toggle"
                         onClick={() => setCollapsed(!collapsed)}
                         icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                     />
-                </Header>
+                </Header> }
                 <Content className="content">{children}</Content>
             </Layout>
         </Layout>

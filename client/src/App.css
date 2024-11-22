@@ -41,14 +41,17 @@ body{
 }
 
 .submit{
-    background: linear-gradient(90deg, #4A4063 0%, #BFACC8 100%);
-    padding: 12px;
-    border-radius: 12px;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
     width: 200px;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 20px; 
     font-size: 16px;
-    color: #eee;
+    background-color: #23272b;
+    border-color: #333;
   }
 
 .submit:hover {
@@ -63,7 +66,13 @@ body{
 }
 .tabla td,
 .tabla th{
-    padding: 12px;
+    padding: 8px;
+    text-wrap: nowrap;
+}
+.medicos td, .medicos th{
+    padding: 20px;
+    padding-top: 13px;
+    padding-bottom: 13px;
     text-wrap: nowrap;
 }
 
