@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllresultado } from '../api/resultado.api';
+import { getAllresultado, updateResultado } from '../api/resultado.api';
 import { getAllexamen } from '../api/examen.api';
 import { getAllEstados } from '../api/estado.api.js';
 import { Link } from 'react-router-dom';
@@ -79,6 +79,7 @@ const ResultadoTabla = () => {
                         <th>Descripción</th>
                         <th>Nombre del Examen</th>
                         <th>Estado</th>
+                        <th>Editar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,6 +89,9 @@ const ResultadoTabla = () => {
                                 <td>{resultado.descripcion}</td>
                                 <td>{getExamen(resultado.examen)}</td>
                                 <td>{getEstado(resultado.estado)}</td>
+                                <td>
+                                <Link to={`/editar-resultado/${resultado.id}`} className="btn btn-primary">Editar</Link>
+                                </td>
                             </tr>
                         ))}
                 </tbody>

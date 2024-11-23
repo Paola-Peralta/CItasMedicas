@@ -20,6 +20,7 @@ import Examenes from './pages/Examenes.jsx';
 import AgregarExamenes from './pages/AgregarExamenes.jsx';
 import Resultados from './pages/Resultados.jsx';
 import AgregarResultado from './pages/AgregarResultados.jsx';
+import FormResultados from './components/FormResultados.jsx';
 const { Header, Sider, Content } = Layout;
 
 function AppLayout({ children }) {
@@ -74,6 +75,7 @@ function App() {
                                     <Route path="/resultados" element={<Resultados />} />
                                     <Route path="/agregar-resultado" element={<AgregarResultado />} />
                                     <Route path="/paciente/:id" element={<AgregarCitas />} />
+                                    <Route path="/editar-resultado/:id" element={<FormResultados />} />
                                     </Routes>
                                 </AppLayout>
                             </ProtectedRoute>
