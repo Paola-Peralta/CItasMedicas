@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 const ProtectedRoute = ({ children }) => {
     const { user } = useContext(AuthContext);
 
+    // Si no hay usuario, redirige al login
     return user ? children : <Navigate to="/login" />;
 };
 
