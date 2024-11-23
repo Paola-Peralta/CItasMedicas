@@ -28,12 +28,12 @@ const MenuList = () =>{
             <Menu.Item key='resultados' icon={<FileDoneOutlined/>}>
                 <Link to="/resultados">Resultados</Link>
             </Menu.Item>
-            <Menu.Item key='perfil' icon={<SettingOutlined/>}>
+            {/* <Menu.Item key='perfil' icon={<SettingOutlined/>}>
                 Perfiles
             </Menu.Item>
             <Menu.Item key='setting' icon={<SettingOutlined/>}>
                 Configuraciones
-            </Menu.Item>
+            </Menu.Item> */}
         </Menu>
     );
 };
