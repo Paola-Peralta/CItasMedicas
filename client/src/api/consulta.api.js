@@ -5,4 +5,5 @@ const consultaApi = axios.create({
 })
 
 export const getAllConsultas = () => consultaApi.get('/')
+export const getConsulta = (id) => consultaApi.get(`/${id}`)
 export const sendConsultas = (consultas) => consultaApi.post("/", consultas)

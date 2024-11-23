@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { getAllConsultas, sendConsultas } from '../api/consulta.api';
+import {  sendConsultas } from '../api/consulta.api';
 import Swal from 'sweetalert2'
 
 const FormConsulta = () => {
@@ -13,9 +13,9 @@ const FormConsulta = () => {
         .max(300, 'El diagnóstico no debe superar los 300 caracteres'),
         sintomas: Yup.string()
         .nullable(),
-        cita: Yup.number()
-        .required('La cita es requerida')
-        .typeError('Debe seleccionar una cita válida')
+        // cita: Yup.number()
+        // .required('La cita es requerida')
+        // .typeError('Debe seleccionar una cita válida')
     });
 
     const handleSubmit = async (values, { resetForm }) => {
@@ -77,7 +77,16 @@ const FormConsulta = () => {
                         <ErrorMessage name="cita" component="p" className="error" />
                     </div>
                 </div>
+{/* 
+                <div className="item-group">
+                        <div className="item-input">
+                        <label htmlFor="cita">Cita:</label>
+                        <CitaSelect onCitaSelect={(citaId) => setFieldValue("cita", citaId)} />
+                        <ErrorMessage name="cita" component="p" className="error" />
+                        </div>
+                    </div> */}
 
+                    
                 <button type="submit" disabled={isSubmitting} className="submit">
                     {isSubmitting ? 'Enviando...' : 'Enviar'}
                 </button>

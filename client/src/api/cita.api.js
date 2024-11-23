@@ -5,4 +5,5 @@ const citaApi = axios.create({
 })
 
 export const getAllCitas = () => citaApi.get('/')
+export const getcita = (id) => citaApi.get(`/${id}`)
 export const sendCitas = (citas) => citaApi.post("/", citas)

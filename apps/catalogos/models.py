@@ -96,7 +96,7 @@ class Medico(models.Model):
 #*Modelo de Citas*#
 class Cita(models.Model):
     codigo_cita = models.CharField(verbose_name='Código', max_length=30, unique=True, blank=True)
-    Fecha = models.DateField(verbose_name= 'Fecha')
+    Fecha = models.DateField(verbose_name= 'Fecha', auto_now_add=True)
     Hora_cita = models.DateTimeField(verbose_name= 'Hora')
     motivo = models.TextField(blank=True, null=True)
     Paciente = models.ForeignKey(Paciente, verbose_name='Paciente', on_delete=models.PROTECT)

@@ -3,8 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { getAllexamen, sendexamen } from '../api/examen.api';
 import Swal from 'sweetalert2'
+import {useNavigate, useParams} from 'react-router-dom'
 
 const FormExamenes = () => {
+    
     const validationSchema = Yup.object({
         nombre: Yup.string()
             .required('El nombre del examen es requerido')
@@ -13,9 +15,10 @@ const FormExamenes = () => {
         fechaEntrega: Yup.date()
             .required('La fecha de entrega es requerida')
             .typeError('Debe ser una fecha válida'),
-        consulta: Yup.number()
-            .required('La consulta es requerida')
-            .typeError('Debe seleccionar una consulta válida')
+       
+        // consulta: Yup.number()
+        //     .required('La consulta es requerida')
+        //     .typeError('Debe seleccionar una consulta válida')
     });
     const handleSubmit = async (values, { resetForm }) => {
         try {
@@ -67,13 +70,15 @@ const FormExamenes = () => {
                         </div>
                     </div>
 
-                    <div className="item-group">
+
+                    {/* <div className="item-group">
                         <div className="item-input">
                             <label htmlFor="consulta">Consulta:</label>
-                            <Field type="number" id="consulta" name="consulta" className="input-text"/>
+                            <ConsultaSelect onConsultaSelect={(consultaId) => setFieldValue("consulta", consultaId)} />
                             <ErrorMessage name="consulta" component="p" className="error" />
                         </div>
-                    </div>
+                    </div> */}
+
 
                     <button type="submit" disabled={isSubmitting} className="submit">
                         {isSubmitting ? 'Enviando...' : 'Enviar'}

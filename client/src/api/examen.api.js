@@ -5,4 +5,5 @@ const examenApi = axios.create({
 })
 
 export const getAllexamen = () => examenApi.get('/')
+export const  getExamen = (id) => examenApi.get(`/${id}`)
 export const sendexamen = (examen) => examenApi.post("/", examen)

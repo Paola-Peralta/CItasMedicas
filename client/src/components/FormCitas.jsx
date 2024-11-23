@@ -14,9 +14,9 @@ const FormCitas = () => {
 
     const validationSchema = Yup.object({
         
-        Fecha: Yup.date()
-            .required('La fecha es requerida')
-            .typeError('La fecha debe ser válida'),
+        // Fecha: Yup.date()
+        //     .required('La fecha es requerida')
+        //     .typeError('La fecha debe ser válida'),
         Hora_cita: Yup.string()
             .required('La hora de la cita es requerida')
             .typeError('La hora de la cita debe ser válida'),
@@ -59,7 +59,7 @@ const FormCitas = () => {
 
     return(
         <Formik
-            initialValues={{Fecha: '', Hora_cita: '', motivo: '', Paciente: `${id}`, Medico: ''}}
+            initialValues={{ Hora_cita: '', motivo: '', Paciente: `${id}`, Medico: ''}}
             validationSchema={validationSchema}
             onSubmit={handleSubmit}
         >
@@ -68,13 +68,13 @@ const FormCitas = () => {
 
                 <Form className="form">
 
-                    <div className="item-group">
+                    {/* <div className="item-group">
                         <div className="item-input">
                             <label htmlFor="Fecha">Fecha:</label>
                             <Field type="date" id="Fecha" name="Fecha" className="input-date "/>
                             <ErrorMessage name="Fecha" component="p" className="error" />
                         </div>                        
-                    </div>
+                    </div> */}
 
 
                     <div className="item-group">
